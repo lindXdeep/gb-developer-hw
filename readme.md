@@ -1,3 +1,5 @@
+[toc]
+
 # Интструкция для работы с Git и удаленным репозиторием
 
 ## Что такео Git?
@@ -145,8 +147,87 @@ Changes not staged for commit:
     modified:   file
 ```
 
-# Ветвление
+## Ветвление
 
+### Просмотр веток
+
+```bash
+git branch      # Просмотр всех существующих веток.
+* master
+```
+
+```bash
+git branch -a		# all все скрытые ветки тоже
+* master
+```
+
+```bash
+git branch -v		# Подробно с hash-code и коментариями.
+* master 795dda0 initialization commit
+```
+
+### Новая ветка
+
+```bash
+git branch fork_first           # Create branch
+git branch -v
+ feature 795dda0 commit A       # новая ветка будет указывать на тот же коммит что и мастер
+* master 795dda0 commit A       # *сейчас мы в мастере
+```
+
+### Переключение весток
+
+Коммиты - не принадлежат веткам. Структура коммитов существует сама по себе безотносительно них. Ветки накладываются поверх коммитов как указатели. Это, например, означает, что изменение коммита общего для нескольких веток отражается на всех ветках, в которые попал этот коммит.
+
+### `checkout`
+
+`git checkout <branch>`    -     переключаться между **branch** (ветками)​
+
+```bash
+git checkout feature
+git branch -v
+* feature 795dda0 commit A                # *теперь мы в feature
+  master  795dda0 commit A
+```
+
+`-b` - создать ветку и сразу перейти в нее
+
+```bash
+git checkout -b fix                        # Create and Switched to a new branch 'fix'
+git branch -v
+  feature 795dda0 commit A
+* fix     795dda0 commit A                # *Ветка создана и мы сразу в нее перешли.
+  master  795dda0 commit A
+```
+
+На этой стадии  если в index'е есть каикето неакомиченные изменения то они все попадут в нову ветку. Чтобы эти изменения стали раздельными нужно сделать хотя бы 1 коммит в новой веткке.
+
+`-f` `--force` - принудительно переключиться а другую ветку.
+
+Если при переключении веток есть какието <u>не проиндексированные изменения в working directory</u>, то git выдаст ошибку.
+
+```bash
+error: Your local changes to the following files would be overwritten by checkout:
+    file
+Please commit your changes or stash them before you switch branches.
+Aborting
+```
+
+т.к. при переключении веток, git из индекса <u>**перезаписывает файлы** в **working directory**</u> (Перезаписывает содержимым на которое указывает HEAD). Так гит предупреждает что бы случайно не затереть не проиндексированные изменения.
+
+Параметр `--force` - позволяет принудительно переключиться на другую ветку, перезаписав working directory.
+
+```bash
+git checkout -f master     # все файлы перезапишутся версиями из master
+```
+
+​    Если мы находимся в ветке и еще не делали commit и хотим удалить все изменения и вернутся к последнему коммиту:
+
+```bash
+git checkout -f HEAD    
+```
+
+Если файлы еще не готовы для коммита, но нужно переключиться на другую ветку, то текущие изменения можно сохранить в специаотном стеке `git stash`  и позже востановить их.
 ## Удаление ветки
 
 ```bash
@@ -180,10 +261,6 @@ git checkout master
 git branch -m staroje-imia novoje-imia
 
 ```
-
-
-
-
 
 
 
