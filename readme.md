@@ -99,6 +99,21 @@ Untracked files:
     file
 ```
 
+**Staged** - отслеживаемый файл 
+
+```bash
+git add file
+```
+
+```bash
+git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+    new file:   file
+```
+
 
 
 
