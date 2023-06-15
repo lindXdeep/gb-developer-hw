@@ -147,7 +147,7 @@ Changes not staged for commit:
 
 # Ветвление
 
-## Delete branch
+## Удаление ветки
 
 ```bash
 git branch -d fork_first  # удалить если ветка смержина
@@ -163,6 +163,21 @@ git push origin :<branchName>
 
 ```bash
 git branch new_name hash   # hash коммта головы удаленной ветки
+
+```
+
+## Переименование ветки
+
+```bash
+git branch -m novoje-imia
+
+```
+
+Вы также можете переименовать локальную ветку, находясь на другой ветке, используя следующие две команды:
+
+```bash
+git checkout master
+git branch -m staroje-imia novoje-imia
 
 ```
 
