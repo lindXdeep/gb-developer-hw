@@ -186,17 +186,17 @@ git branch -v
 ```bash
 git checkout feature
 git branch -v
-* feature 795dda0 commit A                # *теперь мы в feature
+* feature 795dda0 commit A          # *теперь мы в feature
   master  795dda0 commit A
 ```
 
 `-b` - создать ветку и сразу перейти в нее
 
 ```bash
-git checkout -b fix                        # Create and Switched to a new branch 'fix'
+git checkout -b fix                # Create and Switched to a new branch 'fix'
 git branch -v
   feature 795dda0 commit A
-* fix     795dda0 commit A                # *Ветка создана и мы сразу в нее перешли.
+* fix     795dda0 commit A         # *Ветка создана и мы сразу в нее перешли.
   master  795dda0 commit A
 ```
 
@@ -233,9 +233,6 @@ git checkout -f HEAD
 ```bash
 git branch -d fork_first  # удалить если ветка смержина
 git branch -D fork_two    # принудительно удалить в любом случае   
-
-git push origin --delete <branchName>
-git push origin :<branchName> 
 ```
 
 Если коммиты были в ветках то при удаление сами коммиты останутся в проекте. Удаляются только (ссылки)
@@ -244,27 +241,17 @@ git push origin :<branchName>
 
 ```bash
 git branch new_name hash   # hash коммта головы удаленной ветки
-
 ```
 
 ## Переименование ветки
 
 ```bash
 git branch -m novoje-imia
-
-```
-
-Вы также можете переименовать локальную ветку, находясь на другой ветке, используя следующие две команды:
-
-```bash
-git checkout master
-git branch -m staroje-imia novoje-imia
-
 ```
 
 ## Слияние
 
-# Fast-forward
+### Fast-forward
 
 Fast-forward - Происходит тогда когда изменения в новой ветке (созданной от master ветки), не конфликтуют с мастер-веткой (те в мастере не должно быть изменений). Получается что новая ветка, фактически, просто продолжает мастер-ветку. ( т.е. сливаемая ветка прямой потомок)
 
@@ -309,5 +296,81 @@ git log --all --graph --oneline
     .    .    .
 ```
 
-### 
+### Истинностное слияни
+
+Перед слиянием желательно что бы статус был чиситый
+
+```bash
+git status
+On branch feature
+nothing to commit, working tree clean
+```
+
+После запуска `merge` буедт искать коммит на котором ветки разделились (общий коммит предок - **base**)
+
+```bash
+git merge-base master feature # показать hesh общего предка(комита разделения) этих 2х веток
+f02a15e2370aff744c9f00c734a4fe3da5037126
+```
+
+При автоматическом мердже git сливает ветки следущим способом:
+
+**base** + (**our** changes) + (**their** changes) -> merge
+
+        **base** - общая ветка предок
+        **our** - наша ветка на кторой находимя (master)
+        **their** - сливаемая ветка
+
+```bash
+git checkout master                 # переходим в мастер
+Switched to branch 'master'
+```
+
+```bash
+git merge feature                 # указываем ветку откуда сливать изменения
+```
+
+На этом этапе мы попадаем в состояние прерванного слияния:
+
+```bash
+Auto-merging file
+CONFLICT (content): Merge conflict in file
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+а сливаемый коммит из (feature) гитзапоминает в файле `.git/MERGE_HEAD`:
+
+```bash
+cat .git/MERGE_HEAD 
+78ff95d17e22d7f5c6ce4a7b71b1dcf18b4f7f0e
+```
+
+На этом этапе в конфликном фале нужно принять решения какие изменения оставляем и сделать коммит.
+
+```bash
+first line
+<<<<<<< HEAD
+second line
+three line
+=======
+2-nd line
+3-d line
+>>>>>>> feature
+```
+
+### `--ours`, `--theirs`, `--merge`
+
+Это можно сделать вручную оректировав конфликтный файл или  с помощью кооманд:
+
+```bash
+git checkput --ours file_two   # вытащить версию ту что в мастере(HEAD)
+```
+
+```bash
+git checkput --theirs file_two # вытащить версию ту что в (feature)
+```
+
+```bash
+git checkout --merge file_two  # оставить как есть (версия с маркерами конфликта)
+```
 
