@@ -130,6 +130,29 @@ Untracked files:
     file
 ```
 
+**Modified** - внесенные изменения в working directory
+
+>  Внесём изменения в файл
+
+```bash
+git status
+
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+    modified:   file
+```
+
+
+
+
+
+
+
+
+
 
 
 
