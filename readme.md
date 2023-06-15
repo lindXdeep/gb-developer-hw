@@ -166,7 +166,14 @@ git branch -v		# Подробно с hash-code и коментариями.
 * master 795dda0 initialization commit
 ```
 
-## 
+## Новая ветка
+
+```bash
+git branch fork_first           # Create branch
+git branch -v
+ feature 795dda0 commit A       # новая ветка будет указывать на тот же коммит что и мастер
+* master 795dda0 commit A       # *сейчас мы в мастере
+```
 
 
 
