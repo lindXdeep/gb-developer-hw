@@ -114,15 +114,21 @@ Changes to be committed:
     new file:   file
 ```
 
+**Unstage** - файл удален из трекинга
 
+```bash
+git reset HEAD file        # или выташить из репозитория в index конкретный файл
+```
 
+```bash
+git status 
 
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
 
-
-
-
-
-
+    file
+```
 
 
 
