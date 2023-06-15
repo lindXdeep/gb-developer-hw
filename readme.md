@@ -262,7 +262,52 @@ git branch -m staroje-imia novoje-imia
 
 ```
 
+## Слияние
 
+# Fast-forward
 
+Fast-forward - Происходит тогда когда изменения в новой ветке (созданной от master ветки), не конфликтуют с мастер-веткой (те в мастере не должно быть изменений). Получается что новая ветка, фактически, просто продолжает мастер-ветку. ( т.е. сливаемая ветка прямой потомок)
 
+```mermaid
+graph LR;
+subgraph master
+    init(b3d4)---A(2ec0)---B(4bcb):::HEAD
+end
+subgraph fix
+    B-.->D(6c9e)---E(f091)
+end
+classDef HEAD fill:#686E00;
+```
+
+В этом случае git просто перенесет указатель **(master)** на голову новой ветки и сделает ее частью master.
+
+```mermaid
+graph LR;
+subgraph HEAD -> master, fix
+    init(b3d4)---A(2ec0)---B(4bcb)---D(6c9e)---E(f091):::HEAD
+end
+classDef HEAD fill:#686E00;
+```
+
+**merge**
+
+```bash
+git merge feature 
+Updating 795443f..725eea8
+Fast-forward
+ file | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+```
+
+Так как тут нет никаких других наследников, то нет смысла делать слияние и гит просто переносит указатель сливая мастер  с feature в одну ветку.
+
+```bash
+git log --all --graph --oneline
+* 725eea8 (HEAD -> master, feature) commit AC
+* 98d6d2b commit AB
+* 8109537 commit AA
+    .    .    .
+```
+
+### 
 
