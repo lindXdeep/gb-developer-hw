@@ -145,11 +145,26 @@ Changes not staged for commit:
     modified:   file
 ```
 
+# Ветвление
 
+## Delete branch
 
+```bash
+git branch -d fork_first  # удалить если ветка смержина
+git branch -D fork_two    # принудительно удалить в любом случае   
 
+git push origin --delete <branchName>
+git push origin :<branchName> 
+```
 
+Если коммиты были в ветках то при удаление сами коммиты останутся в проекте. Удаляются только (ссылки)
 
+Поэтому можно отменить удаление создав новую ссылку на ветку
+
+```bash
+git branch new_name hash   # hash коммта головы удаленной ветки
+
+```
 
 
 
