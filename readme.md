@@ -1,3 +1,5 @@
+[toc]
+
 # Интструкция для работы с Git и удаленным репозиторием
 
 ## Что такео Git?
@@ -145,11 +147,26 @@ Changes not staged for commit:
     modified:   file
 ```
 
+## Ветвление
 
+### Просмотр веток
 
+```bash
+git branch      # Просмотр всех существующих веток.
+* master
+```
 
+```bash
+git branch -a		# all все скрытые ветки тоже
+* master
+```
 
+```bash
+git branch -v		# Подробно с hash-code и коментариями.
+* master 795dda0 initialization commit
+```
 
+## 
 
 
 
