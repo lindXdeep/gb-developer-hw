@@ -1,4 +1,10 @@
-﻿Console.Write("Enter Name: ");
-string username = Console.ReadLine();
-Console.Write("Hello, ");
-Console.WriteLine(username);
+﻿int numberA = 10;
+int numberB = 5;
+
+System.Console.WriteLine(numberA + numberB);
+
+double numberC = 12;
+double numberD = 5;
+
+Console.WriteLine(numberC / numberD);
+
