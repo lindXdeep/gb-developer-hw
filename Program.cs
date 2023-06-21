@@ -1,7 +1,13 @@
-﻿int numberA = new Random().Next(1, 10);
-int numberB = new Random().Next(1, 10);
+﻿Console.Write("Enter name: ");
+string username = Console.ReadLine();
 
-int result = numberA + numberB;
-
-Console.WriteLine(result);
+if (username.ToLower() == "bob") 
+{
+  Console.WriteLine("Hello, Bob!!!");
+}
+else
+{
+  Console.Write("Hi, ");
+  Console.WriteLine(username);
+}
 
