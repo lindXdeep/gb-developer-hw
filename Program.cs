@@ -1,10 +1,7 @@
-﻿int numberA = 10;
-int numberB = 5;
+﻿int numberA = new Random().Next(1, 10);
+int numberB = new Random().Next(1, 10);
 
-System.Console.WriteLine(numberA + numberB);
+int result = numberA + numberB;
 
-double numberC = 12;
-double numberD = 5;
-
-Console.WriteLine(numberC / numberD);
+Console.WriteLine(result);
 
