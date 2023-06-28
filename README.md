@@ -67,3 +67,29 @@ class Program
 ```
 commit ac9a6558d9410476421dfbf7d3bd8f8eed1c94be
 ```
+
+## Задача 6: Напишите программу, которая на вход принимает число и выдаёт, является ли число чётным (делится ли оно на два без остатка).
+
+```
+4 -> да
+-3 -> нет
+7 -> нет
+```
+
+### Решение:
+
+```c#
+class Program
+{
+  public static void Main(String[] args)
+  {
+    int n = Convert.ToInt32(Console.ReadLine());
+
+    Console.WriteLine(n % 2 == 0 ? "да" : "нет");
+  }
+}
+```
+
+```
+commit f71799e1883317b5a40389f8c7651938e6bc1253
+```
