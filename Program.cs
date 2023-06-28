@@ -7,12 +7,15 @@ class Program
     string line = Console.ReadLine();
     string[] strSplit = line.Split(' ');
 
-    int a = Convert.ToInt32(strSplit[0]);
-    int b = Convert.ToInt32(strSplit[1]);
+    int max = Convert.ToInt32(strSplit[0]);
 
-    int max = a < b ? b : a;
-    int min = a > b ? b : a;
+    int i = strSplit.Length - 1;
+    while (i > 0)
+    {
+      int x = Convert.ToInt32(strSplit[i--]);
+      max = max < x ? x : max;
+    }
 
-    Console.WriteLine($"min = {min}, max = {max}");
+    Console.WriteLine($"max = {max}");
   }
 }
