@@ -6,6 +6,8 @@ class Program
   {
     int n = Convert.ToInt32(Console.ReadLine());
 
-    Console.WriteLine(n / 10 % 10);
+    while ((n /= 10) > 999) ;
+
+    Console.WriteLine(n / 100 > 0 ? n % 10 : "третьей цифры нет");
   }
 }
