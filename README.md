@@ -23,3 +23,31 @@ class Program
   }
 }
 ```
+
+## Задача 13: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
+```
+645 -> 5
+78 -> третьей цифры нет
+32679 -> 6
+```
+
+### Решение
+
+```
+commit 37abb6c6680bfa989edf56c62563ecc6fff27b03
+```
+
+```c#
+class Program
+{
+  public static void Main(String[] args)
+  {
+    int n = Convert.ToInt32(Console.ReadLine());
+
+    while ((n /= 10) > 999) ;
+
+    Console.WriteLine(n / 100 > 0 ? n % 10 : "третьей цифры нет");
+  }
+}
+```
+
