@@ -6,17 +6,26 @@ public class Program
   {
     int n = Convert.ToInt32(Console.ReadLine());
 
-    int t = n;
-    int p = 0;
+    int[] arr = new int[Convert.ToString(n).Length];
+
+    int i = 0;
     while (n > 0)
     {
-      int x = n % 10;
-
+      arr[i++] = n % 10;
       n /= 10;
-
-      p = p * 10 + x;
     }
 
-    Console.WriteLine(t == p ? "да" : "нет");
+    int b = 0;
+    int e = arr.Length - 1;
+    while (b != e)
+    {
+      if (arr[b++] != arr[e--])
+      {
+        Console.WriteLine("нет");
+        return;
+      }
+    }
+
+    Console.WriteLine("да");
   }
 }
