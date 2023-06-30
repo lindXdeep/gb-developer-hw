@@ -4,28 +4,18 @@ public class Program
 {
   public static void Main(string[] args)
   {
-    int n = Convert.ToInt32(Console.ReadLine());
+    string[] input = Console.ReadLine().Split(' ');
+    
+    int x1 = Convert.ToInt32(input[0]);
+    int y1 = Convert.ToInt32(input[1]);
+    int z1 = Convert.ToInt32(input[2]);
 
-    int[] arr = new int[Convert.ToString(n).Length];
+    int x2 = Convert.ToInt32(input[3]);
+    int y2 = Convert.ToInt32(input[4]);
+    int z2 = Convert.ToInt32(input[5]);
 
-    int i = 0;
-    while (n > 0)
-    {
-      arr[i++] = n % 10;
-      n /= 10;
-    }
+    double result = Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2) + Math.Pow(z1 - z2, 2));
 
-    int b = 0;
-    int e = arr.Length - 1;
-    while (b != e)
-    {
-      if (arr[b++] != arr[e--])
-      {
-        Console.WriteLine("нет");
-        return;
-      }
-    }
-
-    Console.WriteLine("да");
+    Console.WriteLine(Math.Round(result, 2));
   }
 }
