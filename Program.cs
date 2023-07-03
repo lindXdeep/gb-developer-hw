@@ -4,13 +4,9 @@ class Program
 {
   public static void Main(string[] args)
   {
-    int n = Convert.ToInt32(Console.ReadLine());
+    int[] array = new int[] { 1, 2, 5, 7, 19, 6, 1, 33 };
 
-    int sum = 0;
-
-    for (; n > 0; n /= 10)
-      sum += n % 10;
-
-    Console.WriteLine($"{sum}");
+    foreach (var item in array)
+      Console.Write($"{item} ");
   }
 }
