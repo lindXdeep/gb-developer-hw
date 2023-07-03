@@ -4,15 +4,13 @@ class Program
 {
   public static void Main(string[] args)
   {
-    string[] input = Console.ReadLine().Split(" ");
+    int n = Convert.ToInt32(Console.ReadLine());
 
-    int a = int.Parse(input[0]);
-    int b = int.Parse(input[1]);
+    int sum = 0;
 
-    int n = 1;
-    while (b-- > 0)
-      n *= a;
+    for (; n > 0; n /= 10)
+      sum += n % 10;
 
-    Console.WriteLine($"{n}");
+    Console.WriteLine($"{sum}");
   }
 }
