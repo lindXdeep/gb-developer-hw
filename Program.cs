@@ -4,24 +4,31 @@ class Program
 {
   public static void Main(string[] args)
   {
-    int[] arr = GetRandom(0, 100, 5);
+    double[] arr = GetRandom(5);
 
-    int sum = 0;
+    double max = arr[0];
+    double min = arr[1];
     for (int i = 0; i < arr.Length; i++)
     {
       Console.Write($"{arr[i]}, ");
-      if (i % 2 != 0)
-        sum += arr[i];
+
+      if (arr[i] < min)
+        min = arr[i];
+      else if (arr[i] > max)
+        max = arr[i];
     }
-    Console.WriteLine($" -> {sum}");
+
+    double res = max - min;
+
+    Console.WriteLine(" -> {0:0.00}", res);
   }
 
-  public static int[] GetRandom(int min, int max, int size)
+  public static double[] GetRandom(int size)
   {
-    int[] arr = new int[size];
+    double[] arr = new double[size];
 
     for (int i = 0; i < size; i++)
-      arr[i] = new Random().Next(min, max);
+      arr[i] = Math.Round(new Random().NextDouble() * 20, 2);
 
     return arr;
   }
