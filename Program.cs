@@ -7,7 +7,8 @@ class Program
     int[,] arr = {
       {1, 4, 7, 2},
       {5, 9, 2, 3},
-      {8, 4, 2, 4}
+      {8, 4, 2, 4},
+      {5, 2, 6, 7}
     };
 
     printArray(arr);
@@ -15,18 +16,24 @@ class Program
     int row = arr.GetUpperBound(0) + 1;
     int cal = arr.Length / row;
 
+    int[] counts = new int[row];
+
     for (int i = 0; i < row; i++)
       for (int j = 0; j < cal; j++)
-        for (int x = 0; x < cal; x++)
-          for (int y = x; y < cal; y++)
-            if (arr[i, x] < arr[i, y])
-            {
-              arr[i, y] ^= arr[i, x];
-              arr[i, x] ^= arr[i, y];
-              arr[i, y] ^= arr[i, x];
-            }
-            
-    printArray(arr);
+        counts[i] += arr[i, j];
+
+    int min = int.MaxValue;
+    int idx = 0;
+    for (int i = 0; i < counts.Length; i++)
+    {
+      if (counts[i] < min)
+      {
+        min = counts[i];
+        idx = i;
+      }
+    }
+
+    Console.WriteLine(idx);
   }
 
   public static void printArray(int[,] arr)
@@ -43,4 +50,3 @@ class Program
     }
   }
 }
-
