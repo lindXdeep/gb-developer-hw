@@ -67,3 +67,25 @@ m = 3, n = 4.
 ```
 
 Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+
+## Решение
+
+```c#
+
+// .  .  .
+
+  double[] count_cols = new double[rows + 1];
+
+  for (int j = 0; j < cols; j++)
+  {
+    double sum = 0;
+    for (int i = 0; i < rows; i++)
+      sum += arr[i, j];
+    count_cols[j] = sum / rows;
+  }
+
+  Console.WriteLine();
+  foreach (var s in count_cols)
+    Console.Write("{0, 5} ", s);
+  Console.WriteLine();
+```
