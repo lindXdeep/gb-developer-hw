@@ -4,15 +4,14 @@ class Program
 {
   public static void Main(string[] args)
   {
-    string[] input = Console.ReadLine().Split(' ');
-    int m = Convert.ToInt32(input[0]);
-    int n = Convert.ToInt32(input[1]);
+    int m = 3;
+    int n = 4;
 
-    double[,] arr = new double[m, n];
+    int[,] arr = new int[m, n];
 
     for (int i = 0; i < m; i++)
       for (int j = 0; j < n; j++)
-        arr[i, j] = Math.Round(new Random().NextDouble() * 20, 2);
+        arr[i, j] = Math.Ceiling(new Random().NextDouble() * 20);
 
     int rows = arr.GetUpperBound(0) + 1;
     int cols = arr.Length / rows;
@@ -24,10 +23,5 @@ class Program
       Console.WriteLine();
     }
 
-    string[] coord = Console.ReadLine().Split(' ');
-    int x = Convert.ToInt32(coord[0]);
-    int y = Convert.ToInt32(coord[1]);
-
-    Console.WriteLine(x > n || y > m ? "такого числа в массиве нет" : $"{arr[x, y]}");
   }
 }
