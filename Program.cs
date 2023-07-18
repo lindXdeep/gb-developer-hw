@@ -23,5 +23,11 @@ class Program
         Console.Write("{0, 7}", arr[i, j]);
       Console.WriteLine();
     }
+
+    string[] coord = Console.ReadLine().Split(' ');
+    int x = Convert.ToInt32(coord[0]);
+    int y = Convert.ToInt32(coord[1]);
+
+    Console.WriteLine(x > n || y > m ? "такого числа в массиве нет" : $"{arr[x, y]}");
   }
 }

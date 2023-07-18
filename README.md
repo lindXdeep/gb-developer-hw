@@ -13,7 +13,7 @@ m = 3, n = 4.
 
 ```c#
   string[] input = Console.ReadLine().Split(' ');
-  int m = Convert.ToInt32(input[0]);:
+  int m = Convert.ToInt32(input[0]);
   int n = Convert.ToInt32(input[1]);
 
   double[,] arr = new double[m, n];
@@ -31,4 +31,27 @@ m = 3, n = 4.
       Console.Write("{0, 7}", arr[i, j]);
     Console.WriteLine();
   }
+```
+
+## Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
+
+Например, задан массив:
+```
+1 4 7 2
+5 9 2 3
+8 4 2 4
+17 -> такого числа в массиве нет
+```
+
+### Решение
+
+```c#
+
+  // . . . 
+
+  string[] coord = Console.ReadLine().Split(' ');
+  int x = Convert.ToInt32(coord[0]);
+  int y = Convert.ToInt32(coord[1]);
+
+  Console.WriteLine(x > n || y > m ? "такого числа в массиве нет" : $"{arr[x, y]}");
 ```
