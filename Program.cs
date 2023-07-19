@@ -4,47 +4,76 @@ class Program
 {
   public static void Main(string[] args)
   {
-    int[,] arr = {
-      {1, 4, 7, 2},
-      {5, 9, 2, 3},
-      {8, 4, 2, 4},
-      {5, 2, 6, 7}
+    int[,] A = {
+      {2,4},
+      {3,2}
     };
 
-    printArray(arr);
+    int[,] B = {
+      {3,4,5},
+      {3,3,2}
+    };
 
-    int row = arr.GetUpperBound(0) + 1;
-    int cal = arr.Length / row;
+    printArray(A);
+    printArray(B);
 
-    int[] counts = new int[row];
 
-    for (int i = 0; i < row; i++)
-      for (int j = 0; j < cal; j++)
-        counts[i] += arr[i, j];
+    int rowA = A.GetUpperBound(0) + 1;
+    int colA = A.Length / rowA;
 
-    int min = int.MaxValue;
-    int idx = 0;
-    for (int i = 0; i < counts.Length; i++)
+    int rowB = B.GetUpperBound(0) + 1;
+    int colB = B.Length / rowB;
+
+    int[,] C = new int[rowB, colB];
+
+    if (colA == rowB)
     {
-      if (counts[i] < min)
+
+      for (int i = 0; i < rowA; i++)
       {
-        min = counts[i];
-        idx = i;
+        for (int j = 0; j < colA; j++)
+        {
+          Console.Write($"{A[i, j]}");
+        }
       }
+
+
+      Console.WriteLine();
+
+      for (int i = 0; i < rowB; i++)
+      {
+        for (int j = 0; j < colB; j++)
+        {
+          Console.Write($"{B[i, j]}");
+        }
+      }
+
+
+    }
+    else
+    {
+      Console.WriteLine($"Такую матрицу перемножать нельзя");
     }
 
-    Console.WriteLine(idx);
+
+
+
+
+
+    printArray(C);
+
   }
 
-  public static void printArray(int[,] arr)
+  private static void printArray(int[,] arr)
   {
     Console.WriteLine();
+
     int row = arr.GetUpperBound(0) + 1;
-    int cal = arr.Length / row;
+    int col = arr.Length / row;
 
     for (int i = 0; i < row; i++)
     {
-      for (int j = 0; j < cal; j++)
+      for (int j = 0; j < col; j++)
         Console.Write($"{arr[i, j]} ");
       Console.WriteLine();
     }
