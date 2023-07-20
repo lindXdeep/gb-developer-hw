@@ -5,18 +5,14 @@ class Program
   public static void Main(string[] args)
   {
     int[,] A = {
-      {2,4},
-      {3,2}
+      {1,2},
+      {3,4}
     };
 
     int[,] B = {
-      {3,4,5},
-      {3,3,2}
+      {5,6,7},
+      {8,9,10}
     };
-
-    printArray(A);
-    printArray(B);
-
 
     int rowA = A.GetUpperBound(0) + 1;
     int colA = A.Length / rowA;
@@ -28,40 +24,19 @@ class Program
 
     if (colA == rowB)
     {
-
-      for (int i = 0; i < rowA; i++)
-      {
-        for (int j = 0; j < colA; j++)
-        {
-          Console.Write($"{A[i, j]}");
-        }
-      }
-
-
-      Console.WriteLine();
-
       for (int i = 0; i < rowB; i++)
-      {
-        for (int j = 0; j < colB; j++)
-        {
-          Console.Write($"{B[i, j]}");
-        }
-      }
-
-
+        for (int l = 0; l < colA; l++)
+          for (int j = 0; j < colB; j++)
+            C[l, j] += A[l, i] * B[i, j];
     }
     else
     {
       Console.WriteLine($"Такую матрицу перемножать нельзя");
     }
 
-
-
-
-
-
+    printArray(A);
+    printArray(B);
     printArray(C);
-
   }
 
   private static void printArray(int[,] arr)
