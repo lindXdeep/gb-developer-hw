@@ -4,18 +4,19 @@ class Program
 {
   public static void Main(string[] args)
   {
-    int N = Convert.ToInt32(Console.ReadLine());
+    string[] input = Console.ReadLine().Split(" ");
+    int M = Convert.ToInt32(input[0]);
+    int N = Convert.ToInt32(input[1]);
 
-    NaturalNums(N);
+    int s = NaturalSum(0, M, N);
+    Console.WriteLine(s);
   }
 
-  public static int NaturalNums(int n)
+  public static int NaturalSum(int sum, int m, int n)
   {
-    Console.Write($"{n} ");
+    if (n < m)
+      return sum;
 
-    if (n == 1)
-      return 1;
-
-    return NaturalNums(n - 1);
+    return NaturalSum(sum + n, m, n - 1);
   }
 }
