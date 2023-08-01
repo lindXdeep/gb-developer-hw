@@ -8,15 +8,20 @@ class Program
     int M = Convert.ToInt32(input[0]);
     int N = Convert.ToInt32(input[1]);
 
-    int s = NaturalSum(0, M, N);
-    Console.WriteLine(s);
+    int a = Ackermann(M, N);
+    Console.WriteLine(a);
   }
 
-  public static int NaturalSum(int sum, int m, int n)
+  public static int Ackermann(int m, int n)
   {
-    if (n < m)
-      return sum;
-
-    return NaturalSum(sum + n, m, n - 1);
+    if (m == 0)
+      return Ackermann(m, n + 1);
+    else if (m > 0 & n == 0)
+      return Ackermann(m - 1, 1);
+    else if (m > 0 & n > 0)
+      return Ackermann(m - 1, Ackermann(m, n - 1));
+    
+    return 0;
   }
 }
+
