@@ -27,13 +27,24 @@ class Program
         Console.Write(j != strings[i].Length - 1 ? ", " : " ]");
       }
 
-      string s = string.Join(", ", op(strings[i]));
-      Console.Write($" => [ \"{s}\" ] \n");
+      string s = string.Join("\", \"", op(strings[i]));
+      Console.Write(s.Length != 0 ? $" => [ \"{s}\" ] \n" : " => [] \n");
     }
   }
 
   public static string[] GetLines(string[] lines)
   {
+    int j = 0;
+    string[] tmp = new string[lines.Length];
+
+    for (int i = 0; i < lines.Length; i++)
+      if (lines[i].Length <= 3)
+        tmp[j++] = lines[i];
+
+    lines = new string[j];
+    for (int i = 0; i < j; i++)
+      lines[i] = tmp[i];
+
     return lines;
   }
 }
