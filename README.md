@@ -21,3 +21,60 @@
 ["1234", "1567", "-2”, "computer science"] → ["-2"]
 ["Russia", "Denmark", "Kazan"] → []
 ```
+
+### 1. Решенеие:
+
+```c#
+
+// - - -
+
+  public static string[] GetLines(string[] lines)
+  {
+    int j = 0;
+    string[] tmp = new string[lines.Length];
+
+    for (int i = 0; i < lines.Length; i++)
+      if (lines[i].Length <= 3)
+        tmp[j++] = lines[i];
+
+    lines = new string[j];
+    for (int i = 0; i < j; i++)
+      lines[i] = tmp[i];
+
+    return lines;
+  }
+```
+
+## 2. Блок-схема алгоритма:
+
+```mermaid
+flowchart TB
+
+start([начало])-->
+
+init["
+  string[] lines;
+  string tmp[lines.length];
+  int j = 0;
+"]-->
+
+loop1{{for i: 0 ... lines.length}}-->
+
+for{"lines[i].length <= 3"}
+
+for --true--> 
+  true["tmp[j++] = lines[i]"] --> loop1
+for --false--> 
+  loop1
+
+loop1 --end loop--> 
+
+then["lines = new string[j]"] -->
+  loop2{{"for i: 0 ... j"}} --> 
+    assig["lines[i] = tmp[i]"] --> 
+      loop2
+  loop2 --end loop-->
+
+stop([конец])
+
+```
