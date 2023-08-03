@@ -16,9 +16,20 @@ class Program
 
   public static void TestGetLines(string[][] strings, Operation op)
   {
-    string[] s = op(strings[0]);
+    int size = strings.Length;
 
-    Console.WriteLine("Testing: " + s[0]);
+    for (int i = 0; i < size; i++)
+    {
+      Console.Write("[ ");
+      for (int j = 0; j < strings[i].Length; j++)
+      {
+        Console.Write($"\"{strings[i][j]}\"");
+        Console.Write(j != strings[i].Length - 1 ? ", " : " ]");
+      }
+
+      string s = string.Join(", ", op(strings[i]));
+      Console.Write($" => [ \"{s}\" ] \n");
+    }
   }
 
   public static string[] GetLines(string[] lines)
