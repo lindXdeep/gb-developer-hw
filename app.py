@@ -1,8 +1,8 @@
-n = 123
+from math import ceil
 
-i = 0
-while n > 0:
-  i += n % 10
-  n = int(n / 10)
+a = int(input())
+b = int(input())
+c = int(input())
 
-print(i)
+print(ceil((a + b + c) / 2))
+
