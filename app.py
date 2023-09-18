@@ -1,8 +1,6 @@
-from math import ceil
+n = 6
 
-a = int(input())
-b = int(input())
-c = int(input())
+a = int(n / 3)
+b = int(n - a)
 
-print(ceil((a + b + c) / 2))
-
+print(int(a / 2), b, int(a / 2))
