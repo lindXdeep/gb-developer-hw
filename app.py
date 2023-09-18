@@ -1,5 +1,8 @@
-from math import ceil
+n = 123
 
-n, m = map(int, input().split())
+i = 0
+while n > 0:
+  i += n % 10
+  n = int(n / 10)
 
-print(ceil(m / n))
+print(i)
