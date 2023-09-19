@@ -1,9 +1,16 @@
-n = 5
+import random
 
-f = 1
-i = 1
-while i < n:
+c = 5
+
+coins = list()
+
+i = 0
+while i < c:
   i += 1
-  f *= i
+  coins.append(random.randint(0, 1))
 
-print(f)
+s = ''.join(str(coins))
+res = s.count('0')
+
+print(f"{c} -> {coins} \n{res}")
+
