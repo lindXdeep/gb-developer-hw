@@ -1,17 +1,9 @@
-n = 385916
+n = 5
 
-x = str(n)
-s = int(len(x) / 2)
+f = 1
+i = 1
+while i < n:
+  i += 1
+  f *= i
 
-l = x[:s]
-r = x[s:]
-
-a = 0
-for i in l:
-  a += int(i)
-
-b = 0
-for i in r:
-  b += int(i)
-
-print(('no','yes')[a == b])
+print(f)
