@@ -1,16 +1,13 @@
-import random
+a = 21
 
-c = 5
+n = 0
 
-coins = list()
+f1 = 1
+f2 = 1
+while f1 < a - 1 > 0:
+  f1, f2 = f2, f1 + f2
+  a -= 1 
+  n += 1
 
-i = 0
-while i < c:
-  i += 1
-  coins.append(random.randint(0, 1))
-
-s = ''.join(str(coins))
-res = s.count('0')
-
-print(f"{c} -> {coins} \n{res}")
+print(n + 2)
 
