@@ -149,8 +149,76 @@ for i in range(k - 1):
 ### Решение:
 
 ```python
+one = ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'S', 'T', 'R', 'А', 'В', 'Е', 'И', 'Н', 'О', 'Р', 'С', 'Т']
+two = ['D', 'G', 'Д', 'К', 'Л', 'М', 'П', 'У']
+three = ['B', 'C', 'M', 'P', 'Б', 'Г', 'Ё', 'Ь', 'Я']
+fore = ['F', 'H', 'V', 'W', 'Y', 'Й', 'Ы']
+five = ['K', 'Ж', 'З', 'Х', 'Ц', 'Ч']
+eight = ['J', 'X','Ш', 'Э', 'Ю']
+ten = ['Q', 'Z', 'Ф', 'Щ', 'Ъ']
 
+k = 'ноутбук'
+
+cost = 0
+
+for i in k:
+  if i.capitalize() in one:
+    cost += 1    
+  elif i.capitalize() in two:
+    cost += 2
+  elif i.capitalize() in three:
+    cost += 3
+  elif i.capitalize() in fore:
+    cost += 4
+  elif i.capitalize() in five:
+    cost += 5
+  elif i.capitalize() in eight:
+    cost += 8
+  elif i.capitalize() in ten:
+    cost += 10
+
+print(cost)
 ```
+
+Решенеие 2:
+
+```python
+points_en = {
+  1: 'AEIOULNSTR', 
+  2: 'DG', 
+  3: 'BCMP', 
+  4: 'FHVWY', 
+  5: 'K', 
+  8: 'JX', 
+  10: 'QZ'
+}
+
+points_ru = {
+  1: 'АВЕИНОРСТ', 
+  2: 'ДКЛМПУ', 
+  3: 'БГЁЬЯ',
+  4: 'ЙЫ', 
+  5: 'ЖЗХЦЧ', 
+  8: 'ШЭЮ', 
+  10: 'ФЩЪ'
+}
+
+word = k.upper()  # переводим все буквы в верхний регистр
+
+count = 0
+for i in word:
+    if i in 'QWERTYUIOPASDFGHJKLZXCVBNM':
+        for j in points_en:
+            if i in points_en[j]:
+                count = count + j
+    else:
+        for j in points_en:
+            if i in points_ru[j]:
+                count = count + j
+print(count)
+```
+
+
 
 ## Задача 21:
 
