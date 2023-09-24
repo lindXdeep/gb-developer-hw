@@ -1,14 +1,16 @@
-list_1 = [1, 1, 2, 0, -1, 3, 4, 4]
+list_1 = [2, 4, 1, 6, 8, 2, 9, 3, 2, 5]
+k = 10
 
-lsit_2 = []
+a = list_1[0]
+b = list_1[len(list_1)-1]
 
 for i in list_1:
-  if i not in lsit_2:
-    lsit_2.append(i)
-  else:
-    continue
+  if k >= i > a:
+    a = i
+  elif k < i < b:
+    b = i 
 
-print(len(lsit_2))
-    
+print((a, b)[abs(k - a) > abs(b - k)])
+
 
 
