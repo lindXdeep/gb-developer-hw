@@ -1,12 +1,9 @@
-list = [0, -1, 5, 2, 3]
+n = int(input())
 
-count = 0
-i = 0
-while i < len(list) - 1:
-  if list[i] < list[i + 1]:
-    count += 1
-  i += 1
+sum = 0
+x = n - 3
+while n > x:
+  sum += n
+  n -= 1
 
-print(count)
-
-  
+print(sum)
