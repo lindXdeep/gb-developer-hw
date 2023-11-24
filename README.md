@@ -91,6 +91,39 @@ sort(arr)
 ### Решение
 
 ```java
+  String name = "log.txt";
+  File file = new File(name);
+
+  if (!file.exists()) {
+    try {
+      file.createNewFile();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  Date d = new Date();
+  String f = "%1$tF %1$tR";
+
+  try (FileWriter fw = new FileWriter(file)) {
+
+    for (int i = 0; i < mas.length; i++) {
+      for (int j = 0; j < mas.length - 1; j++) {
+
+        if (mas[j + 1] < mas[j]) {
+          int t = mas[j + 1];
+          mas[j + 1] = mas[j];
+          mas[j] = t;
+        }
+      }
+      String date = String.format(f, d.getTime());
+      String fwr = String.format("%s %s%n", date, Arrays.toString(mas));
+      fw.append(fwr);
+    }
+
+  } catch (IOException e) {
+    e.printStackTrace();
+  }
 ```
 ## Задача 3: Распарсить JSON
 
