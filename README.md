@@ -135,10 +135,10 @@ sort(arr)
 
 На вход метода answer подаются аргументы:
 
-- String JSON
-- String ELEMENT1
-- String ELEMENT2
-- String ELEMENT3
+- `String JSON`
+- `String ELEMENT1`
+- `String ELEMENT2`
+- `String ELEMENT3`
 - 
 Пример:
 
@@ -159,6 +159,26 @@ ELEMENT3 = " по предмету ";
 ### Решение
 
 ```java
+  StringBuilder sb = new StringBuilder();
+
+  int l = JSON.indexOf("[") + 1;
+  int r = JSON.indexOf("]") + 1;
+  JSON = JSON.substring(l, r);
+
+  for (int b = 0, e = 0; b != -1; b = JSON.indexOf("{", e)) {
+    e = JSON.indexOf("}", b);
+    sb.append(JSON.substring(b + 2, e - 1) + "\n");
+  }
+
+  String rep = sb
+    .toString()
+    .replaceAll("\":\"", "")
+    .replaceAll("\",\"", "")
+    .replaceAll("фамилия", ELEMENT1)
+    .replaceAll("оценка", ELEMENT2)
+    .replaceAll("предмет", ELEMENT3);
+
+  System.out.println(rep);
 ```
 
 ## Задача 4: Калькулятор с логированием
