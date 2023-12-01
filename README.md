@@ -199,4 +199,83 @@ ELEMENT3 = " по предмету ";
 ### Решение
 
 ```java
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
+class Calculator {
+
+  public enum Operation {
+    SUM {
+      public int action(int a, int b) {
+        return a + b;
+      }
+    },
+    SUBTRACT {
+      public int action(int a, int b) {
+        return a - b;
+      }
+    },
+    MULTIPLY {
+      public int action(int a, int b) {
+        return a * b;
+      }
+    },
+    DIVIDE {
+      public int action(int a, int b) {
+        return a / b;
+      }
+    };
+
+    public abstract int action(int a, int b);
+  }
+
+  public int calculate(char op, int a, int b) {
+
+    String name = "log.txt";
+    File file = new File(name);
+
+    if (!file.exists()) {
+      try {
+        file.createNewFile();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+
+    Operation o = op == '+' ? Operation.SUM
+        : op == '-' ? Operation.SUBTRACT : op == '*' ? Operation.MULTIPLY : Operation.DIVIDE;
+
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    LocalDateTime ldt = LocalDateTime.now();
+
+    try (FileWriter fw = new FileWriter(file)) {
+
+      String time = ldt.format(dtf);
+      String fwr = String.format("%s User entered the first operand = %s%n", time, a);
+      fw.append(fwr);
+
+      fwr = String.format("%s User entered the operation = %s%n", time, op);
+      fw.append(fwr);
+
+      fwr = String.format("%s User entered the second operand = %s%n", time, b);
+      fw.append(fwr);
+
+      fwr = String.format("%s Result is %s%n", time, o.action(a, b));
+      fw.append(fwr);
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    return o.action(a, b);
+  }
+}
+  // . . .
+}
 ```
