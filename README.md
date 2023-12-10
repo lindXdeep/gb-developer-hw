@@ -86,7 +86,16 @@ removeEvenNumbers(arr);
 ### Решение:
 
 ```java
+    ArrayList<Integer> list = new ArrayList<>();
 
+    list = Arrays
+        .stream(arr)
+        .mapToInt(Integer::intValue)
+        .filter((n) -> n % 2 != 0)
+        .boxed()
+        .collect(Collectors.toCollection(ArrayList::new));
+
+    System.out.println(list);
 ```
 
 ## Задача 3: Анализатор списка
