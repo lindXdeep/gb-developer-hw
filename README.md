@@ -144,5 +144,3 @@ analyzeNumbers(arr)
   System.out.printf("Maximum is %d%n", max);
   System.out.println("Average is = " + avr);
 ```
-
-## 
