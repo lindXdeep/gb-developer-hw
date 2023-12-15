@@ -126,7 +126,23 @@ analyzeNumbers(arr)
 ### Решение:
 
 ```java
+  List<Integer> list = Arrays.asList(arr);
 
+  Collections.sort(list);
+
+  int min = list.get(0);
+  int max = list.get(list.size() - 1);
+  double avr = 0;
+
+  for (Integer a : list)
+    avr += a.intValue();
+
+  avr = avr / list.size();
+
+  System.out.println(list);
+  System.out.printf("Minimum is %d%n", min);
+  System.out.printf("Maximum is %d%n", max);
+  System.out.println("Average is = " + avr);
 ```
 
 ## 
